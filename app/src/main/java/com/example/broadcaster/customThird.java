@@ -19,7 +19,7 @@ public class customThird extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        String Value = intent.getStringExtra("key");
+        String Value = intent.getStringExtra("message");
 
         IntentFilter intentFilter = new IntentFilter("com.example.broadcaster.CUSTOM_ACTION");
         cbr =new CustomBroadcastReceiver(binding.thirdView);

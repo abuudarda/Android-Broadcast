@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.broadcaster.databinding.ActivityCustomBcinputBinding;
 
@@ -23,6 +24,10 @@ public class customBCinput extends AppCompatActivity {
         binding.Broadcast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                Toast.makeText(this, "Broadcast Started", Toast.LENGTH_SHORT).show();
+                Intent broadcastIntent = new Intent("com.example.broadcaster.CUSTOM_ACTION");
+                broadcastIntent.putExtra("message", "Hello, world!");
+                sendBroadcast(broadcastIntent);
                 Intent intent = new Intent(customBCinput.this, CustomBroadcastReceiver.class);
                 intent.putExtra("key", binding.bcinput.getText().toString());
                 startActivity(intent);
