@@ -20,6 +20,14 @@ public class customBCinput extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= ActivityCustomBcinputBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.Broadcast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(customBCinput.this, CustomBroadcastReceiver.class);
+                intent.putExtra("key", binding.bcinput.getText().toString());
+                startActivity(intent);
+            }
+        });
 
 //        binding.Broadcast.setOnClickListener(view -> {
 //            Intent service = new Intent(customBCinput.this, )
@@ -31,33 +39,13 @@ public class customBCinput extends AppCompatActivity {
 //        String def=binding.bcinput.toString();
 //        intent.putExtra("message", def);
 //        startService(intent);
-        binding.Broadcast.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                sendBroadcast(intent);
-                Intent intent = new Intent(customBCinput.this, customThird.class);
-                intent.putExtra("message",binding.bcinput.getText().toString());
-                startActivity(intent);
-//                CustomBroadcastReceiver receiver = new CustomBroadcastReceiver(binding.customReceive);
-//                IntentFilter filter = new IntentFilter(CustomBroadcastReceiver.CUSTOM_ACTION);
-//                registerReceiver(receiver, filter);
-//                binding.customReceive.setText(binding.bcinput.getText().toString());
 
-            }
-        });
 
 
 //        cbr=new CustomBroadcastReceiver(binding.customReceive);
 //        registerReceiver(cbr,intent);
 
     }
-    private void updateUI(final String message) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mTextView.setText(message);
-            }
-        });
-    }
+
 
 }
